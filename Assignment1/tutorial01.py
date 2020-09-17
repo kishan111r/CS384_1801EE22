@@ -113,6 +113,24 @@ def printAP(a, d, n):
 # Python 3 program to print HP.   Harmonic Progression
 #You cant use the inbuilt python function. Write your own function
 def printHP(a, d, n): 
+	check_n = isinstance(n,int)
+	if(check_n==False):
+		return [0]
 	hp=[]
+
+	reci_term_i=a
+	if(a!=0):
+		hp.append(round(1/a,3))
+	else:
+		hp.append(a)
+	for i in range(n-1):
+		reci_term_i+=d
+		if(reci_term_i!=0):
+			hp.append(round(1/reci_term_i,3))
+		else:
+			hp.append(reci_term_i)
+
+
+
 	return hp	
 
