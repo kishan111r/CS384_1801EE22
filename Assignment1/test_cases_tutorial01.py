@@ -1,6 +1,6 @@
 import tutorial01 as A1
 
-actual_answers = [9, 12, 80, 5 ]
+actual_answers = [9, 12, 80, 5, [2, 6, 18, 54, 162]]
 student_answers = []
 
 test_case_1 = A1.add(4, 5)
@@ -16,7 +16,17 @@ student_answers.append(test_case_3)
 test_case_4 = A1.divide(10, 2)
 student_answers.append(test_case_4)
 
+# Driver code 
 
+a = 2 # starting number 
+r = 3 # Common ratio 
+n = 5 # N th term to be find 
+
+gp = A1.printGP(a, r, n) 
+gp = list(gp) 
+student_answers.append(gp)
+
+print(gp)
 print(actual_answers)
 print(student_answers)
 
