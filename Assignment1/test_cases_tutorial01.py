@@ -16,13 +16,13 @@ student_answers.append(test_case_3)
 test_case_4 = A1.divide(10, 2)
 student_answers.append(test_case_4)
 
-test_case_5 = A1.power(-5, 1)
+test_case_5 = A1.power(-5, 10)
 student_answers.append(test_case_5)
 
 # Code for test case checking of GP
-a = 10
+a = 10.2
 r = 2
-n = 5.1
+n = 5.0
 
 test_case_6 =A1.printGP(a,r,n)
 student_answers.append(list(test_case_6))

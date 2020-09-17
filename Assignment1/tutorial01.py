@@ -26,11 +26,12 @@ def divide(num1, num2):
 #You cant use the inbuilt python function x ** y . Write your own function
 def power(num1, num2): #num1 ^ num2
 	#Power Logic
-	#check_1 = isinstance(num1,(int))
+	check_1 = isinstance(num1,(int,float))
 	check_2 = isinstance(num2,(int))
-	if(check_2== False and num2-int(num2)!=0):
+	if(check_2== False or check_1==False):
 		return 0
-
+	if(num2-int(num2)!=0):
+		return 0
 	power = 0	#By default we have to return 0 in case of any error
 
 	num1=int (num1)
@@ -128,7 +129,7 @@ def printHP(a, d, n):
 		return [0]
 	if(n-int(n)!=0):
 		return [0]
-		
+
 	hp=[]
 
 	reci_term_i=a
