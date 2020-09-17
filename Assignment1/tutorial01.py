@@ -96,7 +96,18 @@ def printGP(a, r, n):
 # Python 3 program to print AP.  arithmetic Progression
 #You cant use the inbuilt python function. Write your own function
 def printAP(a, d, n): 
+	check_n = isinstance(n,int)
+	if(check_n==False):
+		return [0]
 	ap=[]
+	term_i=a
+	ap.append(a)
+	for i in range(n-1):
+
+		term_i+=d
+		ap.append(term_i)
+
+	
 	return ap
 
 # Python 3 program to print HP.   Harmonic Progression
