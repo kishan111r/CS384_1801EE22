@@ -26,9 +26,9 @@ def divide(num1, num2):
 #You cant use the inbuilt python function x ** y . Write your own function
 def power(num1, num2): #num1 ^ num2
 	#Power Logic
-	check_1 = isinstance(num1,(int))
+	#check_1 = isinstance(num1,(int))
 	check_2 = isinstance(num2,(int))
-	if(check_1==False or check_2== False):
+	if(check_2== False):
 		return 0
 
 	power = 0	#By default we have to return 0 in case of any error
@@ -81,6 +81,8 @@ def power(num1, num2): #num1 ^ num2
 #You cant use the inbuilt python function. Write your own function
 def printGP(a, r, n): 
 	gp=[]
+
+
 	return gp 
 
 # Python 3 program to print AP.  arithmetic Progression
