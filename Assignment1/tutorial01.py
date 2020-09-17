@@ -28,7 +28,7 @@ def power(num1, num2): #num1 ^ num2
 	#Power Logic
 	#check_1 = isinstance(num1,(int))
 	check_2 = isinstance(num2,(int))
-	if(check_2== False):
+	if(check_2== False and num2-int(num2)!=0):
 		return 0
 
 	power = 0	#By default we have to return 0 in case of any error
@@ -81,13 +81,13 @@ def power(num1, num2): #num1 ^ num2
 #You cant use the inbuilt python function. Write your own function
 def printGP(a, r, n): 
 	check_n = isinstance(n,int)
-	if(check_n==False):
+	if(check_n==False and n-int(n)!=0):
 		return [0]
 	gp=[]
 	term_i= a
 	gp.append(a)
 
-	for i in range(n-1):
+	for i in range(int(n-1)):
 		term_i*= r
 		gp.append(term_i)
 
@@ -97,12 +97,12 @@ def printGP(a, r, n):
 #You cant use the inbuilt python function. Write your own function
 def printAP(a, d, n): 
 	check_n = isinstance(n,int)
-	if(check_n==False):
+	if(check_n==False and n-int(n)!=0):
 		return [0]
 	ap=[]
 	term_i=a
 	ap.append(a)
-	for i in range(n-1):
+	for i in range(int(n-1)):
 
 		term_i+=d
 		ap.append(term_i)
@@ -114,7 +114,7 @@ def printAP(a, d, n):
 #You cant use the inbuilt python function. Write your own function
 def printHP(a, d, n): 
 	check_n = isinstance(n,int)
-	if(check_n==False):
+	if(check_n==False and n-int(n)!=0):
 		return [0]
 	hp=[]
 
@@ -123,7 +123,7 @@ def printHP(a, d, n):
 		hp.append(round(1/a,3))
 	else:
 		hp.append(a)
-	for i in range(n-1):
+	for i in range(int(n-1)):
 		reci_term_i+=d
 		if(reci_term_i!=0):
 			hp.append(round(1/reci_term_i,3))
