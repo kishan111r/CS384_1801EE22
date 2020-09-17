@@ -18,13 +18,31 @@ student_answers.append(test_case_4)
 
 test_case_5 = A1.power(-5, 1)
 student_answers.append(test_case_5)
- 
+
+# Code for test case checking of GP
 a = 10
 r = 2
-n = 5.0
+n = 5.1
 
 test_case_6 =A1.printGP(a,r,n)
 student_answers.append(list(test_case_6))
+
+
+# Code for test case checking of AP
+a = 10
+d = 2
+n = 7.0
+
+test_case_7 =A1.printAP(a,r,n)
+student_answers.append(list(test_case_7))
+
+# Code for test case checking of HP
+a = 10
+d = 2
+n = 7
+
+test_case_7 =A1.printHP(a,r,n)
+student_answers.append(list(test_case_7))
 
 
 
