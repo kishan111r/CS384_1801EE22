@@ -80,8 +80,12 @@ def power(num1, num2): #num1 ^ num2
 # Python 3 program to print GP.  geometric Progression
 #You cant use the inbuilt python function. Write your own function
 def printGP(a, r, n): 
-	check_n = isinstance(n,int)
-	if(check_n==False and n-int(n)!=0):
+	check_a = isinstance(a,(float,int))
+	check_r = isinstance(r,(float,int))
+	check_n = isinstance(n,(float,int))
+	if(check_n==False or check_r==False or check_n==False):
+		return [0]
+	if(n-int(n)!=0):
 		return [0]
 	gp=[]
 	term_i= a
@@ -96,8 +100,12 @@ def printGP(a, r, n):
 # Python 3 program to print AP.  arithmetic Progression
 #You cant use the inbuilt python function. Write your own function
 def printAP(a, d, n): 
-	check_n = isinstance(n,int)
-	if(check_n==False and n-int(n)!=0):
+	check_a = isinstance(a,(float,int))
+	check_d = isinstance(d,(float,int))
+	check_n = isinstance(n,(float,int))
+	if(check_n==False or check_d==False or check_n==False):
+		return [0]
+	if(n-int(n)!=0):
 		return [0]
 	ap=[]
 	term_i=a
@@ -113,9 +121,14 @@ def printAP(a, d, n):
 # Python 3 program to print HP.   Harmonic Progression
 #You cant use the inbuilt python function. Write your own function
 def printHP(a, d, n): 
-	check_n = isinstance(n,int)
-	if(check_n==False and n-int(n)!=0):
+	check_a = isinstance(a,(float,int))
+	check_d = isinstance(d,(float,int))
+	check_n = isinstance(n,(float,int))
+	if(check_n==False or check_d==False or check_n==False):
 		return [0]
+	if(n-int(n)!=0):
+		return [0]
+		
 	hp=[]
 
 	reci_term_i=a
