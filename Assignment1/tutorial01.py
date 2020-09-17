@@ -80,8 +80,16 @@ def power(num1, num2): #num1 ^ num2
 # Python 3 program to print GP.  geometric Progression
 #You cant use the inbuilt python function. Write your own function
 def printGP(a, r, n): 
+	check_n = isinstance(n,int)
+	if(check_n==False):
+		return [0]
 	gp=[]
+	term_i= a
+	gp.append(a)
 
+	for i in range(n-1):
+		term_i*= r
+		gp.append(term_i)
 
 	return gp 
 

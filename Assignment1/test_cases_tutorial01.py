@@ -19,6 +19,13 @@ student_answers.append(test_case_4)
 test_case_5 = A1.power(-5, 1)
 student_answers.append(test_case_5)
  
+a = 10
+r = 2
+n = 5.0
+
+test_case_6 =A1.printGP(a,r,n)
+student_answers.append(list(test_case_6))
+
 
 
 print(actual_answers)
