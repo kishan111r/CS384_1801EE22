@@ -209,13 +209,15 @@ def sorting(first_list):
 # Function to compute Kurtosis. You cant use Python functions
 def kurtosis(first_list):
     # Kurtosis Logic
+
     return kurtosis_value
 
 
 # Function to compute sum. You cant use Python functions
 def summation(first_list):
     # sum Logic
-
+    if(checktype(first_list)==False):
+        return 0
     summation_value=0
     for i in (first_list):
         summation_value+=i
