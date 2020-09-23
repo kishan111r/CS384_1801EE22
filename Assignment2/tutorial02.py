@@ -4,7 +4,7 @@
 def mean(first_list):
     # mean Logic 
     addition_of_rows= summation(first_list)
-    mean_value=round(addition_of_rows/len(first_list))
+    mean_value=round(addition_of_rows/len(first_list),3)
 
     return mean_value
 
@@ -78,6 +78,6 @@ def summation(first_list):
     # sum Logic
 
     summation_value=0
-    for i in range(first_list.size()):
-        summation_value+=first_list[i]
-    return summation_value
+    for i in (first_list):
+        summation_value+=i
+    return round(summation_value,3)
