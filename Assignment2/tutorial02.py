@@ -19,7 +19,7 @@ def median(first_list):
         return 0
     list_returned=list(first_list)
     list_returned= sorting(list_returned)
-    print(first_list)
+    #print(first_list)
     length= len(first_list)
     median_value=0
     if(length%2==0):
@@ -90,7 +90,7 @@ def mse(first_list, second_list):
     
     square_deviation_sum= 0
     first_list_sorted=first_list
-    print(first_list)
+    #print(first_list)
     second_list_sorted = second_list
     for i in range(0,len(first_list)):
         square_deviation_sum+=(first_list_sorted[i]-second_list_sorted[i])*(first_list_sorted[i]-second_list_sorted[i])
@@ -104,7 +104,24 @@ def mse(first_list, second_list):
 # Function to compute mae. You cant use Python functions
 def mae(first_list, second_list):
     # mae Logic
+    if(checktype(first_list)==False):
+        return 0
+    if(checktype(second_list)==False):
+        return 0
+    if(check_length(first_list,second_list)==False):
+        return 0
+    absolute_deviation_sum= 0
+    first_list_sorted=list(first_list)
+    #print(first_list)
+    second_list_sorted = list(second_list)
+    for i in range(0,len(first_list)):
+        absolute_deviation_sum+=abs(first_list_sorted[i]-second_list_sorted[i])
+    
+    mae_value = absolute_deviation_sum/len(first_list)
+    mae_value= round(mae_value,3)
+    
     return mae_value
+
 
 
 # Function to compute NSE. You cant use Python functions
