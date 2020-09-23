@@ -6,9 +6,10 @@ def mean(first_list):
     if(checktype(first_list)==False):
         return 0
     addition_of_rows= summation(first_list)
-    mean_value=round(addition_of_rows/len(first_list),3)
+    mean_value = addition_of_rows/len(first_list)
+    mean_value=round(mean_value,3)
 
-    return mean_value
+    return round(mean_value,3)
 
 
 # Function to compute median. You cant use Python functions
@@ -97,7 +98,8 @@ def summation(first_list):
     summation_value=0
     for i in (first_list):
         summation_value+=i
-    return round(summation_value,3)
+    summation_value = round(summation_value,3)
+    return summation_value
 
 
 def checktype(first_list):
@@ -107,3 +109,15 @@ def checktype(first_list):
             status=False
             break
     return status
+
+def sorted_list(first_list):
+    if(checktype(first_list)==False):
+        return 0
+    length = len(first_list)
+    for i in range(length):
+
+        for j in range(0,length-i-1):
+            if(first_list[j]>first_list[j+1]):
+                first_list[j],first_list[j+1]=first_list[j+1],first_list[j]
+
+    return first_list
