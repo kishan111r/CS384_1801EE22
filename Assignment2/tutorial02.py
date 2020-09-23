@@ -17,7 +17,9 @@ def median(first_list):
     # median Logic
     if(checktype(first_list)==False):
         return 0
-    list_returned= sorted_list(first_list)
+    list_returned=list(first_list)
+    list_returned= sorting(list_returned)
+    print(first_list)
     length= len(first_list)
     median_value=0
     if(length%2==0):
@@ -87,8 +89,11 @@ def mse(first_list, second_list):
         return 0
     
     square_deviation_sum= 0
-    for i in range(len(first_list)):
-        square_deviation_sum+=(first_list[i]-second_list[i])*(first_list[i]-second_list[i])
+    first_list_sorted=first_list
+    print(first_list)
+    second_list_sorted = second_list
+    for i in range(0,len(first_list)):
+        square_deviation_sum+=(first_list_sorted[i]-second_list_sorted[i])*(first_list_sorted[i]-second_list_sorted[i])
     
     mse_value = square_deviation_sum/len(first_list)
     mse_value= round(mse_value,3)
@@ -121,6 +126,18 @@ def skewness(first_list):
     
 def sorting(first_list):
     # Sorting Logic
+    if(checktype(first_list)==False):
+        return 0
+    length = len(first_list)
+    sorted_list=first_list
+    #print(first_list,"Here is Bug")
+    for i in range(length):
+
+        for j in range(0,length-i-1):
+            if(sorted_list[j]>sorted_list[j+1]):
+                sorted_list[j],sorted_list[j+1]=sorted_list[j+1],sorted_list[j]
+
+     
     return sorted_list
 
 
@@ -149,17 +166,6 @@ def checktype(first_list):
             break
     return status
 
-def sorted_list(first_list):
-    if(checktype(first_list)==False):
-        return 0
-    length = len(first_list)
-    for i in range(length):
-
-        for j in range(0,length-i-1):
-            if(first_list[j]>first_list[j+1]):
-                first_list[j],first_list[j+1]=first_list[j+1],first_list[j]
-
-    return first_list 
 
 def check_length(first_list,second_list):
     if(len(first_list)==len(second_list)):
