@@ -37,6 +37,8 @@ def standard_deviation(first_list):
     # Standard deviation Logic
     if(checktype(first_list)==False):
         return 0
+    standard_deviation_value=0
+    # Computed the Variance Value as its square root will give SD
     variance_value = variance(first_list)
     standard_deviation_value=math.sqrt(variance_value)
     standard_deviation_value = round(standard_deviation_value,3)
@@ -48,6 +50,7 @@ def variance(first_list):
     # variance Logic
     if(checktype(first_list)==False):
         return 0
+    #Taken Mean using earlier defined Mean Function
     mean_value= mean(first_list)
     variance_value=0
     sum_of_deviation_square=0
