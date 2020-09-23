@@ -93,7 +93,7 @@ def mse(first_list, second_list):
     
     square_deviation_sum= 0
     first_list_sorted=first_list
-    #print(first_list)
+    
     second_list_sorted = second_list
     for i in range(0,len(first_list)):
         square_deviation_sum+=(first_list_sorted[i]-second_list_sorted[i])*(first_list_sorted[i]-second_list_sorted[i])
@@ -115,7 +115,7 @@ def mae(first_list, second_list):
         return 0
     absolute_deviation_sum= 0
     first_list_sorted=list(first_list)
-    #print(first_list)
+    
     second_list_sorted = list(second_list)
     for i in range(0,len(first_list)):
         absolute_deviation_sum+=abs(first_list_sorted[i]-second_list_sorted[i])
@@ -139,7 +139,7 @@ def nse(first_list, second_list):
     
     square_deviation_sum= 0
     first_list_sorted=first_list
-    #print(first_list)
+    
     second_list_sorted = second_list
     for i in range(0,len(first_list)):
         square_deviation_sum+=(first_list_sorted[i]-second_list_sorted[i])*(first_list_sorted[i]-second_list_sorted[i])
@@ -198,7 +198,7 @@ def sorting(first_list):
         return 0
     length = len(first_list)
     sorted_list=first_list
-    #print(first_list,"Here is Bug")
+    
     for i in range(length):
 
         for j in range(0,length-i-1):
