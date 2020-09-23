@@ -127,6 +127,28 @@ def mae(first_list, second_list):
 # Function to compute NSE. You cant use Python functions
 def nse(first_list, second_list):
     # nse Logic
+    if(checktype(first_list)==False):
+        return 0
+    if(checktype(second_list)==False):
+        return 0
+    if(check_length(first_list,second_list)==False):
+        return 0
+    
+    square_deviation_sum= 0
+    first_list_sorted=first_list
+    #print(first_list)
+    second_list_sorted = second_list
+    for i in range(0,len(first_list)):
+        square_deviation_sum+=(first_list_sorted[i]-second_list_sorted[i])*(first_list_sorted[i]-second_list_sorted[i])
+
+    mean_value=mean(first_list)
+    deviation= 0
+    for i in range(0,len(first_list)):
+        deviation+= (first_list[i]-mean_value)*(first_list[i]-mean_value)
+
+    intermediate= square_deviation_sum/deviation
+    nse_value= 1-intermediate
+    nse_value=round(nse_value,3)
     return nse_value
 
 
