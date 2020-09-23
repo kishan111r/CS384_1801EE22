@@ -60,12 +60,39 @@ def variance(first_list):
 # Function to compute RMSE. You cant use Python functions
 def rmse(first_list, second_list):
     # RMSE Logic
+    #Guard Code for checking the length and type of elements in list
+    if(checktype(first_list)==False):
+        return 0
+    if(checktype(second_list)==False):
+        return 0
+    if(check_length(first_list,second_list)==False):
+        return 0
+
+    mse_value= mse(first_list,second_list)
+    rmse_value_full=math.sqrt(mse_value)
+    rmse_value=round(rmse_value_full,3)
     return rmse_value
 
 
 # Function to compute mse. You cant use Python functions
 def mse(first_list, second_list):
     # mse Logic
+
+    #Guard Code for checking the length and type of elements in list
+    if(checktype(first_list)==False):
+        return 0
+    if(checktype(second_list)==False):
+        return 0
+    if(check_length(first_list,second_list)==False):
+        return 0
+    
+    square_deviation_sum= 0
+    for i in range(len(first_list)):
+        square_deviation_sum+=(first_list[i]-second_list[i])*(first_list[i]-second_list[i])
+    
+    mse_value = square_deviation_sum/len(first_list)
+    mse_value= round(mse_value,3)
+
     return mse_value
 
 
@@ -132,4 +159,10 @@ def sorted_list(first_list):
             if(first_list[j]>first_list[j+1]):
                 first_list[j],first_list[j+1]=first_list[j+1],first_list[j]
 
-    return first_list
+    return first_list 
+
+def check_length(first_list,second_list):
+    if(len(first_list)==len(second_list)):
+        return True
+    else:
+        return False
