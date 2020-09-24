@@ -7,9 +7,9 @@ def mean(first_list):
         return 0
     addition_of_rows= summation(first_list)
     mean_value = addition_of_rows/len(first_list)
-    mean_value=round(mean_value,3)
+    mean_value=round(mean_value,6)
 
-    return round(mean_value,3)
+    return round(mean_value,6)
 
 
 # Function to compute median. You cant use Python functions
@@ -29,7 +29,7 @@ def median(first_list):
     else:
         median_value = list_returned[int((length-1)/2)]
     
-    return round(median_value,3)
+    return round(median_value,6)
 
 
 # Function to compute Standard deviation. You cant use Python functions
@@ -41,7 +41,7 @@ def standard_deviation(first_list):
     # Computed the Variance Value as its square root will give SD
     variance_value = variance(first_list)
     standard_deviation_value=math.sqrt(variance_value)
-    standard_deviation_value = round(standard_deviation_value,3)
+    standard_deviation_value = round(standard_deviation_value,6)
     return standard_deviation_value
 
 
@@ -58,7 +58,7 @@ def variance(first_list):
         deviation_abs= abs(i-mean_value)
         sum_of_deviation_square+=deviation_abs*deviation_abs
     
-    variance_value = round(sum_of_deviation_square/len(first_list),3)
+    variance_value = round(sum_of_deviation_square/len(first_list),6)
     return variance_value
 
 
@@ -75,7 +75,7 @@ def rmse(first_list, second_list):
 
     mse_value= mse(first_list,second_list)
     rmse_value_full=math.sqrt(mse_value)
-    rmse_value=round(rmse_value_full,3)
+    rmse_value=round(rmse_value_full,6)
     return rmse_value
 
 
@@ -99,7 +99,7 @@ def mse(first_list, second_list):
         square_deviation_sum+=(first_list_sorted[i]-second_list_sorted[i])*(first_list_sorted[i]-second_list_sorted[i])
     
     mse_value = square_deviation_sum/len(first_list)
-    mse_value= round(mse_value,3)
+    mse_value= round(mse_value,6)
 
     return mse_value
 
@@ -121,7 +121,7 @@ def mae(first_list, second_list):
         absolute_deviation_sum+=abs(first_list_sorted[i]-second_list_sorted[i])
     
     mae_value = absolute_deviation_sum/len(first_list)
-    mae_value= round(mae_value,3)
+    mae_value= round(mae_value,6)
     
     return mae_value
 
@@ -151,7 +151,7 @@ def nse(first_list, second_list):
 
     intermediate= square_deviation_sum/deviation
     nse_value= 1-intermediate
-    nse_value=round(nse_value,3)
+    nse_value=round(nse_value,6)
     return nse_value
 
 
@@ -174,7 +174,7 @@ def pcc(first_list, second_list):
     
     denominator= len(first_list)*standard_deviation(first_list)*standard_deviation(second_list)
     pcc_value= sigma/denominator
-    pcc_value = round(pcc_value,3)
+    pcc_value = round(pcc_value,6)
     return pcc_value
 
 
@@ -189,7 +189,7 @@ def skewness(first_list):
         sigma+= (first_list[i]-mean_x)*(first_list[i]-mean_x)*(first_list[i]-mean_x)
     sd= standard_deviation(first_list)
     skewness_value=(sigma)/(sd*sd*sd*len(first_list))
-    skewness_value= round(skewness_value,3)
+    skewness_value= round(skewness_value,6)
     return skewness_value
     
 def sorting(first_list):
@@ -222,7 +222,7 @@ def kurtosis(first_list):
         sigma+= (first_list[i]-mean_x)*(first_list[i]-mean_x)*(first_list[i]-mean_x)*(first_list[i]-mean_x)
     sd= standard_deviation(first_list)
     kurtosis_value=(sigma)/(sd*sd*sd*sd*len(first_list))
-    kurtosis_value= round(kurtosis_value,3)
+    kurtosis_value= round(kurtosis_value,6)
 
     return kurtosis_value
 
@@ -235,7 +235,7 @@ def summation(first_list):
     summation_value=0
     for i in (first_list):
         summation_value+=i
-    summation_value = round(summation_value,3)
+    summation_value = round(summation_value,6)
     return summation_value
 
 
