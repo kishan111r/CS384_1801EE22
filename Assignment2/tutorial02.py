@@ -1,4 +1,4 @@
-# All decimal 3 places
+# All decimal 6 places
 import math
 # Function to compute mean
 def mean(first_list):
