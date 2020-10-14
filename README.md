@@ -5,6 +5,6 @@
 Name : Kishan Kumar Singh\
 Roll No : 1801EE22\
 mail: 1801ee22@iitp.ac.in  kishan111r@gmail.com\
-Phone and WhatsApp : +91 9558434293\
+Phone and WhatsApp : +91 9558434293
 
 # Indian Institute of Technology Patna

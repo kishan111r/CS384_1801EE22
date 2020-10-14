@@ -56,4 +56,4 @@ for x, y in zip(actual_answers, student_answers):
     if x == y:
         count_of_correct_test_cases += 1
 
-print(f"Test Cases Passed = '{count_of_correct_test_cases}'  / '{total_test_cases}'")
+print("Test Cases Passed = 'f{count_of_correct_test_cases}'  / 'f{total_test_cases}'")
