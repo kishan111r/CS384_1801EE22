@@ -100,7 +100,7 @@ def country():
                 file_dir=country_path+file_name
                 writeFile(file_dir,data,header)
                 continue
-            file_name = row['country']+'.csv'
+            file_name = row['country'].lower()+'.csv'
             country_file = os.path.join(country_path,file_name)
             writeFile(country_file,data,header)
 
@@ -121,6 +121,7 @@ def email_domain_extract():
             if('@'in email_id and '.'in email_id):
                 domain_half=email_id.split('@')[1]
                 domain=domain_half.split('.')[0]
+            domain=domain.lower()
             general_path = os.getcwd()
             analytics_path = os.path.join(general_path,'analytics')
             if(os.path.exists(analytics_path)==False):
