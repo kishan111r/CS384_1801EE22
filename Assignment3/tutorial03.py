@@ -77,7 +77,7 @@ def course():
             
     file.close()
 
-course()
+#course()
 
 def country():
     # Read csv and process
@@ -106,7 +106,7 @@ def country():
 
     file.close()
 
-country()
+#country()
 def email_domain_extract():
     # Read csv and process
     with open("studentinfo_cs384.csv",'r') as file:
@@ -138,7 +138,7 @@ def email_domain_extract():
             domain_file = os.path.join(email_path,file_name)
             writeFile(domain_file,data,header)
     file.close()
-email_domain_extract()
+#email_domain_extract()
 def gender():
     # Read csv and process
     with open("studentinfo_cs384.csv",'r') as file:
@@ -149,7 +149,6 @@ def gender():
             header = list(row.keys())
             gender = row['gender']
             gender= gender.lower()
-            # Domain name extraction
             general_path = os.getcwd()
             analytics_path = os.path.join(general_path,'analytics')
             if(os.path.exists(analytics_path)==False):
@@ -168,10 +167,46 @@ def gender():
 
     file.close()
 
-gender()
+#gender()
 def dob():
     # Read csv and process
-    pass
+    with open("studentinfo_cs384.csv",'r') as file:
+        my_file = csv.DictReader(file,delimiter=',',skipinitialspace=True)
+        next(my_file)
+        for row in my_file:
+            data = list(row.values())
+            header = list(row.keys())
+            dob = row['dob']
+            # Year extraction
+            yr = int(dob.split('-')[2])
+            general_path = os.getcwd()
+            analytics_path = os.path.join(general_path,'analytics')
+            if(os.path.exists(analytics_path)==False):
+                os.mkdir(analytics_path)
+            dob_path = os.path.join(analytics_path,'dob')
+            if(os.path.exists(dob_path)==False):
+                os.mkdir(dob_path)
+            if(len(dob)==0):
+                file_name="misc.csv"
+                file_dir=dob_path+file_name
+                writeFile(file_dir,data,header)
+                continue
+            if(yr>=1995 and yr<=1999):
+                file_name ='bday_'+str(1995)+'_'+str(1999)+".csv"
+            elif(yr>=2000 and yr<=2004):
+                file_name ='bday_'+str(2000)+'_'+str(2004)+".csv"
+            elif(yr>=2005 and yr<=2009):
+                file_name ='bday_'+str(2005)+'_'+str(2009)+".csv"
+            elif(yr>=2010 and yr<=2014):
+                file_name ='bday_'+str(2010)+'_'+str(2014)+".csv"
+            elif(yr>=2015 and yr<=2020):
+                file_name ='bday_'+str(2015)+'_'+str(2020)+".csv"
+            
+            dob_file = os.path.join(dob_path,file_name)
+            writeFile(dob_file,data,header)
+
+    file.close()
+dob()
 
 
 def state():
