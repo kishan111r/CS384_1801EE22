@@ -77,7 +77,7 @@ def course():
             
     file.close()
 
-#course()
+course()
 
 def country():
     # Read csv and process
@@ -106,7 +106,7 @@ def country():
 
     file.close()
 
-#country()
+country()
 def email_domain_extract():
     # Read csv and process
     with open("studentinfo_cs384.csv",'r') as file:
@@ -137,13 +137,37 @@ def email_domain_extract():
             domain_file = os.path.join(email_path,file_name)
             writeFile(domain_file,data,header)
     file.close()
-#email_domain_extract()
+email_domain_extract()
 def gender():
     # Read csv and process
-    
-    pass
+    with open("studentinfo_cs384.csv",'r') as file:
+        my_file = csv.DictReader(file,delimiter=',',skipinitialspace=True)
+        next(my_file)
+        for row in my_file:
+            data = list(row.values())
+            header = list(row.keys())
+            gender = row['gender']
+            gender= gender.lower()
+            # Domain name extraction
+            general_path = os.getcwd()
+            analytics_path = os.path.join(general_path,'analytics')
+            if(os.path.exists(analytics_path)==False):
+                os.mkdir(analytics_path)
+            gender_path = os.path.join(analytics_path,'gender')
+            if(os.path.exists(gender_path)==False):
+                os.mkdir(gender_path)
+            if(len(gender)==0):
+                file_name="misc.csv"
+                file_dir=gender_path+file_name
+                writeFile(file_dir,data,header)
+                continue
+            file_name = gender+'.csv'
+            gender_file = os.path.join(gender_path,file_name)
+            writeFile(gender_file,data,header)
 
+    file.close()
 
+gender()
 def dob():
     # Read csv and process
     pass
