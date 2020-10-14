@@ -72,19 +72,37 @@ def course():
             writeFile(file_path,data,header)
             
     file.close()
-    
 
+#course()
 
-
-            
-    pass
-
-course()
 def country():
     # Read csv and process
-    pass
+    with open("studentinfo_cs384.csv",'r') as file:
+        my_file = csv.DictReader(file,delimiter=',',skipinitialspace=True)
+        next(my_file)
+        for row in my_file:
+            data = list(row.values())
+            header = list(row.keys())
+            my_nation = row['country']
+            general_path = os.getcwd()
+            analytics_path = os.path.join(general_path,'analytics')
+            if(os.path.exists(analytics_path)==False):
+                os.mkdir(analytics_path)
+            country_path = os.path.join(analytics_path,'country')
+            if(os.path.exists(country_path)==False):
+                os.mkdir(country_path)
+            if(len(my_nation)==0):
+                file_name="misc.csv"
+                file_dir=country_path+file_name
+                writeFile(file_dir,data,header)
+                continue
+            file_name = row['country']+'.csv'
+            country_file = os.path.join(country_path,file_name)
+            writeFile(country_file,data,header)
 
+    file.close()
 
+country()
 def email_domain_extract():
     # Read csv and process
     pass
