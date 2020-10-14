@@ -13,7 +13,7 @@ def writeFile(file_name,item,header):
     if os.path.isfile(file_name):
         flag=1
     
-    with open(file_name,mode= '+a') as file:
+    with open(file_name,mode= 'a') as file:
         writer = csv.writer(file)
         if(flag==0):
             writer.writerow(header)
@@ -27,7 +27,6 @@ def course():
     #print(os.getcwd())
     with open("studentinfo_cs384.csv",'r') as file:
         my_file = csv.DictReader(file,delimiter=',',skipinitialspace=True)
-        next(my_file)
         for row in my_file:
             data = list(row.values())
             header = list(row.keys())
@@ -83,7 +82,7 @@ def country():
     # Read csv and process
     with open("studentinfo_cs384.csv",'r') as file:
         my_file = csv.DictReader(file,delimiter=',',skipinitialspace=True)
-        next(my_file)
+        
         for row in my_file:
             data = list(row.values())
             header = list(row.keys())
@@ -111,7 +110,7 @@ def email_domain_extract():
     # Read csv and process
     with open("studentinfo_cs384.csv",'r') as file:
         my_file = csv.DictReader(file,delimiter=',',skipinitialspace=True)
-        next(my_file)
+        
         for row in my_file:
             data = list(row.values())
             header = list(row.keys())
@@ -143,7 +142,7 @@ def gender():
     # Read csv and process
     with open("studentinfo_cs384.csv",'r') as file:
         my_file = csv.DictReader(file,delimiter=',',skipinitialspace=True)
-        next(my_file)
+        
         for row in my_file:
             data = list(row.values())
             header = list(row.keys())
@@ -172,7 +171,7 @@ def dob():
     # Read csv and process
     with open("studentinfo_cs384.csv",'r') as file:
         my_file = csv.DictReader(file,delimiter=',',skipinitialspace=True)
-        next(my_file)
+        
         for row in my_file:
             data = list(row.values())
             header = list(row.keys())
@@ -213,7 +212,7 @@ def state():
     # Read csv and process
     with open("studentinfo_cs384.csv",'r') as file:
         my_file = csv.DictReader(file,delimiter=',',skipinitialspace=True)
-        next(my_file)
+        
         for row in my_file:
             data = list(row.values())
             header = list(row.keys())
@@ -242,7 +241,7 @@ def blood_group():
     # Read csv and process
     with open("studentinfo_cs384.csv",'r') as file:
         my_file = csv.DictReader(file,delimiter=',',skipinitialspace=True)
-        next(my_file)
+        
         for row in my_file:
             data = list(row.values())
             header = list(row.keys())
@@ -274,7 +273,7 @@ def new_file_sort():
     # Read csv and process
     with open("studentinfo_cs384.csv",'r') as file:
         my_file = csv.DictReader(file,delimiter=',',skipinitialspace=True)
-        next(my_file)
+        
         for row in my_file:
             data = list(row.values())
             header = list(row.keys())
@@ -292,6 +291,28 @@ def new_file_sort():
             file_name = "studentinfo_cs384_names_split.csv"
             file_path = os.path.join(analytics_path,file_name)
             writeFile(file_path,data,header) #File Written
+    file.close()
+            ##Sorting Part##
+
+    sorting_dic={}
+    identifier = "@!@@@CSK!!"
+    with open(file_path,'r') as file:
+        my_file = csv.DictReader(file,delimiter=',',skipinitialspace=True)
+        for rows in (my_file):
+            sorting_dic[rows['first_name']]=identifier.join(rows.values())
+        
+    file.close()
+    writing_file= "studentinfo_cs384_names_split_sorted_first_name.csv"
+    writing_dir = os.path.join(analytics_path,writing_file)
+    for val in (sorted(sorting_dic.items())):
+        list_entry = list(val[1].split(identifier))
+        # print(list_entry)
+        # break
+        writeFile(writing_dir,list_entry,header)
+     
+
+
+
 
             
 
