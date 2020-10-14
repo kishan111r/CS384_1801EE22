@@ -2,6 +2,10 @@ import csv
 import os
 import string
 os.system("clear")
+# try:
+#     os.rmdir('analytics')
+# except:
+
 # header = ['id','full_name','country','email','gender','dob','blood_group','state']
 
 def writeFile(file_name,item,header):
@@ -102,14 +106,41 @@ def country():
 
     file.close()
 
-country()
+#country()
 def email_domain_extract():
     # Read csv and process
-    pass
-
-
+    with open("studentinfo_cs384.csv",'r') as file:
+        my_file = csv.DictReader(file,delimiter=',',skipinitialspace=True)
+        next(my_file)
+        for row in my_file:
+            data = list(row.values())
+            header = list(row.keys())
+            email_id = row['email']
+            # Domain name extraction
+            domain=''
+            if('@'in email_id and '.'in email_id):
+                domain_half=email_id.split('@')[1]
+                domain=domain_half.split('.')[0]
+            general_path = os.getcwd()
+            analytics_path = os.path.join(general_path,'analytics')
+            if(os.path.exists(analytics_path)==False):
+                os.mkdir(analytics_path)
+            email_path = os.path.join(analytics_path,'email_domain')
+            if(os.path.exists(email_path)==False):
+                os.mkdir(email_path)
+            if(len(domain)==0):
+                file_name="misc.csv"
+                file_dir=email_path+file_name
+                writeFile(file_dir,data,header)
+                continue
+            file_name = domain+'.csv'
+            domain_file = os.path.join(email_path,file_name)
+            writeFile(domain_file,data,header)
+    file.close()
+#email_domain_extract()
 def gender():
     # Read csv and process
+    
     pass
 
 
