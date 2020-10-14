@@ -211,9 +211,34 @@ dob()
 
 def state():
     # Read csv and process
+    with open("studentinfo_cs384.csv",'r') as file:
+        my_file = csv.DictReader(file,delimiter=',',skipinitialspace=True)
+        next(my_file)
+        for row in my_file:
+            data = list(row.values())
+            header = list(row.keys())
+            state = row['state']
+            state = state.lower() #to make in lower case
+            general_path = os.getcwd()
+            analytics_path = os.path.join(general_path,'analytics')
+            if(os.path.exists(analytics_path)==False):
+                os.mkdir(analytics_path)
+            state_path = os.path.join(analytics_path,'state')
+            if(os.path.exists(state_path)==False):
+                os.mkdir(state_path)
+            if(len(state)==0):
+                file_name="misc.csv"
+                file_dir=state_path+file_name
+                writeFile(file_dir,data,header)
+                continue
+            file_name = state+'.csv'
+            state_file = os.path.join(state_path,file_name)
+            writeFile(state_file,data,header)
+
+    file.close()
     pass
 
-
+state()
 def blood_group():
     # Read csv and process
     pass
