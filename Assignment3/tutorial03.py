@@ -206,7 +206,7 @@ def dob():
             writeFile(dob_file,data,header)
 
     file.close()
-dob()
+#dob()
 
 
 def state():
@@ -265,11 +265,34 @@ def blood_group():
             writeFile(blood_group_file,data,header)
 
     file.close()
-    pass
 
-blood_group()
+#blood_group()
 # Create the new file here and also sort it in this function only.
+
+
 def new_file_sort():
     # Read csv and process
-    pass
+    with open("studentinfo_cs384.csv",'r') as file:
+        my_file = csv.DictReader(file,delimiter=',',skipinitialspace=True)
+        next(my_file)
+        for row in my_file:
+            data = list(row.values())
+            header = list(row.keys())
+            general_path = os.getcwd()
+            analytics_path = os.path.join(general_path,'analytics')
+            if(os.path.exists(analytics_path)==False):
+                os.mkdir(analytics_path)
+            del header[1]
+            header.insert(1,"first_name")
+            header.insert(2,"last_name")
+            name = row["full_name"]
+            del data[1]
+            data.insert(1,name.split()[0])
+            data.insert(2," ".join(name.split()[1:]))
+            file_name = "studentinfo_cs384_names_split.csv"
+            file_path = os.path.join(analytics_path,file_name)
+            writeFile(file_path,data,header) #File Written
 
+            
+
+new_file_sort()
