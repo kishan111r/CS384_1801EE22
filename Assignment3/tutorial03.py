@@ -1,12 +1,22 @@
 import csv
 import os
 import string
+import shutil
 os.system("clear")
 # try:
 #     os.rmdir('analytics')
 # except:
 
 # header = ['id','full_name','country','email','gender','dob','blood_group','state']
+
+#def Delete Analytics Folder
+def del_create_analytics_folder():
+
+    dire = os.getcwd()
+    analytics_folder = os.path.join(dire,'analytics')
+    if(os.path.isdir(analytics_folder)):
+        shutil.rmtree(analytics_folder)
+
 
 def writeFile(file_name,item,header):
     flag=0
