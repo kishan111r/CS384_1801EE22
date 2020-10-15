@@ -16,7 +16,8 @@ def del_create_analytics_folder():
     analytics_folder = os.path.join(dire,'analytics')
     if(os.path.isdir(analytics_folder)):
         shutil.rmtree(analytics_folder)
-
+    os.mkdir(analytics_folder)
+del_create_analytics_folder()
 
 def writeFile(file_name,item,header):
     flag=0
