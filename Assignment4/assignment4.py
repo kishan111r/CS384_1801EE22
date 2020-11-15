@@ -17,7 +17,7 @@ def del_grades_folder():
 
 def roll_number_individual_result():
     try:
-        grades = ['AA', 'AB', 'BB', 'BC', 'CC', 'CD', 'DD', 'F', 'I']
+        grades = ['AA', 'AB', 'BB', 'BC', 'CC', 'CD', 'DD', 'F', 'I'] # Valid Grades of the Students in a Semester Grades 
         with open('acad_res_stud_grades.csv') as data_file:
             data_reader = csv.DictReader(data_file)
             for row in data_reader:
