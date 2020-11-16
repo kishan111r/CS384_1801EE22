@@ -127,6 +127,41 @@ def rename_Suits(folder_name):
 
 def rename_How_I_Met_Your_Mother(folder_name):
     # rename Logic 
+    os.chdir(folder_name)
+    duplicate_count = 0
+    files = os.listdir(folder_name)
+    for file_him in files:
+        series_info = re.split('-', file_him)
+        series_name, given_number, episode_name_given = series_info[0], series_info[1], series_info[2]
+        series_name = series_name.strip()
+        given_number = given_number.strip()
+        episode_name_given = episode_name_given.strip()
+        info = re.split('x', given_number)
+        season_number, episode_number = info[0], info[-1]
+        season_number = season_number.strip()
+        episode_number = episode_number.strip()
+        if len(season_number) < season_padding:
+            season_number = int(int(season_padding) -
+                                len(season_number))*'0'+season_number
+        if len(episode_number) < episode_padding:
+            episode_number = int(int(episode_padding) -
+                                 len(episode_number))*'0'+episode_number
+        season_number = season_number.strip()
+        episode_number = episode_number.strip()
+        new_name = series_name + ' - Season ' + \
+            season_number + ' Episode '+episode_number + ' - '
+        data = re.split('\.', episode_name_given)
+        episode_name = data[0]
+        data = re.split('\.', file_him)
+        extension = data[-1]
+        new_name += episode_name + '.' + extension.strip()
+        try:
+            os.rename(file_him, new_name)
+        except:
+            os.remove(file_him)
+            duplicate_count += 1
+            continue
+    return duplicate_count
     
     pass
 
