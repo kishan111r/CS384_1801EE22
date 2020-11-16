@@ -10,6 +10,7 @@ def rename_FIR(folder_name):
 def rename_Game_of_Thrones(folder_name):
     # rename Logic 
     os.chdir(folder_name)
+    duplicate_count = 0
     files = os.listdir(folder_name)
     for file_got in files:
         series_info = re.split('-', file_got)
@@ -36,14 +37,46 @@ def rename_Game_of_Thrones(folder_name):
         series_info = re.split('\.', file_got)
         extension = series_info[-1]
         new_name += episode_name + '.' + extension.strip()
-        os.rename(file_got, new_name)
+        try:
+            os.rename(file_got, new_name)
+        except:
+            os.remove(file_got)
+            duplicate_count += 1
+            continue
+    return duplicate_count
 
 
     
 
 def rename_Sherlock(folder_name):
-    # rename Logic 
-    pass
+    # rename Logic
+    duplicate_count = 0 
+    os.chdir(folder_name)
+    files = os.listdir(folder_name)
+    for file_sherlock in files:
+        pattern = re.compile('\d+')
+        info = re.split('\.', file_sherlock)
+        info_num = re.findall(pattern, file_sherlock)
+        season_number = info_num[0]
+        episode_number = info_num[1]
+        if len(season_number) < season_padding:
+            season_number = int(int(season_padding) -
+                                len(season_number))*'0'+season_number
+        if len(episode_number) < episode_padding:
+            episode_number = int(int(episode_padding) -
+                                 len(episode_number))*'0'+episode_number
+        season_number = season_number.strip()
+        episode_number = episode_number.strip()
+        new_name = info[0]+' - Season '+season_number + \
+            ' Episode '+episode_number+'.'+info[-1]
+        try:
+            os.rename(file_sherlock, new_name)
+        except:
+            os.remove(file_sherlock)
+            duplicate_count += 1
+            continue
+    return duplicate_count
+
 
 
 
@@ -51,14 +84,15 @@ def rename_Sherlock(folder_name):
 
 def rename_Suits(folder_name):
     # rename Logic 
-    pass
+    
 
 
     
 
 def rename_How_I_Met_Your_Mother(folder_name):
     # rename Logic 
-    pass
+    
+
 
 
 
@@ -77,7 +111,7 @@ while flag:
         while flag_season_padding:
             season_padding = input("Please enter padding for season number: ")
             try:
-                season_padding = float(season_padding)
+                season_padding = int(season_padding)
                 flag_season_padding = False #Valid Padding Found
             except:
                 print('Season padding is not valid Some Error Occured\n')
@@ -85,7 +119,7 @@ while flag:
         while flag_episode_padding:
             episode_padding = input("Please enter padding for Episode number: ")
             try:
-                episode_padding = float(episode_padding)
+                episode_padding = int(episode_padding)
                 flag_episode_padding = False #Valid Padding Found
             except:
                 print('Season padding is not valid Please enter again\n')
@@ -95,9 +129,11 @@ while flag:
             duplicate_file = rename_FIR(concernedPath)
             print(f"Total Duplicate files removed -> {duplicate_file}")
         elif webSeriesIndex ==2:
-            rename_Game_of_Thrones(concernedPath)
+            duplicate_file = rename_Game_of_Thrones(concernedPath)
+            print(f"Total Duplicate files removed -> {duplicate_file}")
         elif webSeriesIndex ==3:
-            rename_Sherlock(concernedPath)
+            duplicate_file = rename_Sherlock(concernedPath)
+            print(f"Total Duplicate files removed -> {duplicate_file}")
         elif webSeriesIndex ==4:
             duplicate_file = rename_Suits(concernedPath)
             print(f"Total Duplicate files removed -> {duplicate_file}")
@@ -109,5 +145,3 @@ while flag:
 
     else:
         print("Series is not in the Database of the existing series please select from the database:)")
-
-
