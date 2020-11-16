@@ -17,8 +17,7 @@ def rename_FIR(folder_name):
                 number_info = re.findall(pattern, file)
                 episode_number = number_info[0].split()[1]
             if len(episode_number) < episode_padding:
-                episode_number = int(int(episode_padding) -
-                                     len(episode_number))*'0'+episode_number
+                episode_number = int(int(episode_padding) - len(episode_number))*'0'+episode_number
             new_name = 'FIR - Episode '+episode_number + r'.'+extension
             os.rename(file_fir, new_name)
         except:         # When we encounter Duplicate files then only there is an error so removing the duplicate files
@@ -37,31 +36,30 @@ def rename_Game_of_Thrones(folder_name):
     duplicate_count = 0
     files = os.listdir(folder_name)
     for file_got in files:
-        series_info = re.split('-', file_got)
-        series_name, given_number, episode_name_given = series_info[0], series_info[1], series_info[2]
-        series_name = series_name.strip()
-        given_number = given_number.strip()
-        episode_name_given = episode_name_given.strip()
-        series_info = re.split('x', given_number)
-        season_number, episode_number = series_info[0], series_info[1]
-        season_number = season_number.strip()
-        episode_number = episode_number.strip()
-        if len(season_number) < season_padding:
-            season_number = int(int(season_padding) -
-                                len(season_number))*'0'+season_number
-        if len(episode_number) < episode_padding:
-            episode_number = int(int(episode_padding) -
-                                 len(episode_number))*'0'+episode_number
-        season_number = season_number.strip()
-        episode_number = episode_number.strip()
-        new_name = series_name + ' - Season ' + \
-            season_number + ' Episode '+episode_number + ' - '
-        series_info = re.split('\.', episode_name_given)
-        episode_name = series_info[0]
-        series_info = re.split('\.', file_got)
-        extension = series_info[-1]
-        new_name += episode_name + '.' + extension.strip()
         try:
+            series_info = re.split('-', file_got)
+            series_name, given_number, episode_name_given = series_info[0], series_info[1], series_info[2]
+            series_name = series_name.strip()
+            given_number = given_number.strip()
+            episode_name_given = episode_name_given.strip()
+            series_info = re.split('x', given_number)
+            season_number, episode_number = series_info[0], series_info[1]
+            season_number = season_number.strip()
+            episode_number = episode_number.strip()
+            if len(season_number) < season_padding:
+                season_number = int(int(season_padding) -
+                                    len(season_number))*'0'+season_number
+            if len(episode_number) < episode_padding:
+                episode_number = int(int(episode_padding) -
+                                    len(episode_number))*'0'+episode_number
+            season_number = season_number.strip()
+            episode_number = episode_number.strip()
+            new_name = series_name + ' - Season ' + season_number + ' Episode '+episode_number + ' - '
+            series_info = re.split('\.', episode_name_given)
+            episode_name = series_info[0]
+            series_info = re.split('\.', file_got)
+            extension = series_info[-1]
+            new_name += episode_name + '.' + extension.strip()
             os.rename(file_got, new_name)
         except:
             os.remove(file_got)
@@ -78,22 +76,19 @@ def rename_Sherlock(folder_name):
     os.chdir(folder_name)
     files = os.listdir(folder_name)
     for file_sherlock in files:
-        pattern = re.compile('\d+')
-        info = re.split('\.', file_sherlock)
-        info_num = re.findall(pattern, file_sherlock)
-        season_number = info_num[0]
-        episode_number = info_num[1]
-        if len(season_number) < season_padding:
-            season_number = int(int(season_padding) -
-                                len(season_number))*'0'+season_number
-        if len(episode_number) < episode_padding:
-            episode_number = int(int(episode_padding) -
-                                 len(episode_number))*'0'+episode_number
-        season_number = season_number.strip()
-        episode_number = episode_number.strip()
-        new_name = info[0]+' - Season '+season_number + \
-            ' Episode '+episode_number+'.'+info[-1]
         try:
+            pattern = re.compile('\d+')
+            info = re.split('\.', file_sherlock)
+            info_num = re.findall(pattern, file_sherlock)
+            season_number = info_num[0]
+            episode_number = info_num[1]
+            if len(season_number) < season_padding:
+                season_number = int(int(season_padding) - len(season_number))*'0'+season_number
+            if len(episode_number) < episode_padding:
+                episode_number = int(int(episode_padding) - len(episode_number))*'0'+episode_number
+            season_number = season_number.strip()
+            episode_number = episode_number.strip()
+            new_name = info[0]+' - Season '+season_number + ' Episode '+episode_number+'.'+info[-1]
             os.rename(file_sherlock, new_name)
         except:
             os.remove(file_sherlock)
@@ -112,33 +107,30 @@ def rename_Suits(folder_name):
     duplicate_count = 0
     files = os.listdir(folder_name)
     for file_suit in files:
-        series_info = re.split('-', file_suit)
-        series_name = series_info[0]
-        given_number = series_info[1]
-        episode_name_given = series_info[2]
-        series_name = series_name.strip()
-        given_number = given_number.strip()
-        episode_name_given = episode_name_given.strip()
-        data = re.split('x', given_number, maxsplit=2)
-        season_number, episode_number = data[0], data[-1]
-        season_number = season_number.strip()
-        episode_number = episode_number.strip()
-        if len(season_number) < season_padding:
-            season_number = int(int(season_padding) -
-                                len(season_number))*'0'+season_number
-        if len(episode_number) < episode_padding:
-            episode_number = int(int(episode_padding) -
-                                 len(episode_number))*'0'+episode_number
-        season_number = season_number.strip()
-        episode_number = episode_number.strip()
-        new_name = series_name + ' - Season ' + \
-            season_number + ' Episode '+episode_number + ' - '
-        extra = re.split('\.', episode_name_given)
-        episode_name = extra[0]
-        extra = re.split('\.', file_suit)
-        extension = extra[-1]
-        new_name += episode_name + '.' + extension.strip()
         try:
+            series_info = re.split('-', file_suit)
+            series_name = series_info[0]
+            given_number = series_info[1]
+            episode_name_given = series_info[2]
+            series_name = series_name.strip()
+            given_number = given_number.strip()
+            episode_name_given = episode_name_given.strip()
+            data = re.split('x', given_number, maxsplit=2)
+            season_number, episode_number = data[0], data[-1]
+            season_number = season_number.strip()
+            episode_number = episode_number.strip()
+            if len(season_number) < season_padding:
+                season_number = int(int(season_padding) - len(season_number))*'0'+season_number
+            if len(episode_number) < episode_padding:
+                episode_number = int(int(episode_padding) - len(episode_number))*'0'+episode_number
+            season_number = season_number.strip()
+            episode_number = episode_number.strip()
+            new_name = series_name + ' - Season ' + season_number + ' Episode '+episode_number + ' - '
+            extra = re.split('\.', episode_name_given)
+            episode_name = extra[0]
+            extra = re.split('\.', file_suit)
+            extension = extra[-1]
+            new_name += episode_name + '.' + extension.strip()
             os.rename(file_suit, new_name)
         except:
             os.remove(file_suit)
@@ -155,31 +147,28 @@ def rename_How_I_Met_Your_Mother(folder_name):
     duplicate_count = 0
     files = os.listdir(folder_name)
     for file_him in files:
-        series_info = re.split('-', file_him)
-        series_name, given_number, episode_name_given = series_info[0], series_info[1], series_info[2]
-        series_name = series_name.strip()
-        given_number = given_number.strip()
-        episode_name_given = episode_name_given.strip()
-        info = re.split('x', given_number)
-        season_number, episode_number = info[0], info[-1]
-        season_number = season_number.strip()
-        episode_number = episode_number.strip()
-        if len(season_number) < season_padding:
-            season_number = int(int(season_padding) -
-                                len(season_number))*'0'+season_number
-        if len(episode_number) < episode_padding:
-            episode_number = int(int(episode_padding) -
-                                 len(episode_number))*'0'+episode_number
-        season_number = season_number.strip()
-        episode_number = episode_number.strip()
-        new_name = series_name + ' - Season ' + \
-            season_number + ' Episode '+episode_number + ' - '
-        data = re.split('\.', episode_name_given)
-        episode_name = data[0]
-        data = re.split('\.', file_him)
-        extension = data[-1]
-        new_name += episode_name + '.' + extension.strip()
         try:
+            series_info = re.split('-', file_him)
+            series_name, given_number, episode_name_given = series_info[0], series_info[1], series_info[2]
+            series_name = series_name.strip()
+            given_number = given_number.strip()
+            episode_name_given = episode_name_given.strip()
+            info = re.split('x', given_number)
+            season_number, episode_number = info[0], info[-1]
+            season_number = season_number.strip()
+            episode_number = episode_number.strip()
+            if len(season_number) < season_padding:
+                season_number = int(int(season_padding) - len(season_number))*'0'+season_number
+            if len(episode_number) < episode_padding:
+                episode_number = int(int(episode_padding) - len(episode_number))*'0'+episode_number
+            season_number = season_number.strip()
+            episode_number = episode_number.strip()
+            new_name = series_name + ' - Season ' + season_number + ' Episode '+episode_number + ' - '
+            data = re.split('\.', episode_name_given)
+            episode_name = data[0]
+            data = re.split('\.', file_him)
+            extension = data[-1]
+            new_name += episode_name + '.' + extension.strip()
             os.rename(file_him, new_name)
         except:
             os.remove(file_him)
