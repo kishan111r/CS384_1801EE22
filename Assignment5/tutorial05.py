@@ -2,7 +2,31 @@ import os
 import re
 os.system('cls' if os.name == 'nt' else 'clear')
 def rename_FIR(folder_name):
-    pass
+    duplicate_count = 0
+    os.chdir(folder_name)
+    files = os.listdir(folder_name)
+    for file_fir in files:
+        try:
+            extension = re.split('\.', file_fir)[-1]
+            pattern = re.compile('Episode [\d]+')
+            number_info = re.findall(pattern, file_fir)
+            try:
+                episode_number = number_info[0].split()[1]
+            except:
+                pattern = re.compile('Ep [\d]+')
+                number_info = re.findall(pattern, file)
+                episode_number = number_info[0].split()[1]
+            if len(episode_number) < episode_padding:
+                episode_number = int(int(episode_padding) -
+                                     len(episode_number))*'0'+episode_number
+            new_name = 'FIR - Episode '+episode_number + r'.'+extension
+            os.rename(file_fir, new_name)
+        except:         # When we encounter Duplicate files then only there is an error so removing the duplicate files
+            os.remove(file_fir)
+            duplicate_count += 1
+            continue
+            print(f"Some Error Occured while working on file: {file_fir}")
+    return duplicate_count
 
 
     
@@ -162,8 +186,6 @@ def rename_How_I_Met_Your_Mother(folder_name):
             duplicate_count += 1
             continue
     return duplicate_count
-    
-    pass
 
 
 
