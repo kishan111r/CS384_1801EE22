@@ -2,7 +2,6 @@ import os
 import re
 os.system('cls' if os.name == 'nt' else 'clear')
 def rename_FIR(folder_name):
-    # rename Logic 
     pass
 
 
@@ -10,7 +9,34 @@ def rename_FIR(folder_name):
 
 def rename_Game_of_Thrones(folder_name):
     # rename Logic 
-    pass
+    os.chdir(folder_name)
+    files = os.listdir(folder_name)
+    for file_got in files:
+        series_info = re.split('-', file_got)
+        series_name, given_number, episode_name_given = series_info[0], series_info[1], series_info[2]
+        series_name = series_name.strip()
+        given_number = given_number.strip()
+        episode_name_given = episode_name_given.strip()
+        series_info = re.split('x', given_number)
+        season_number, episode_number = series_info[0], series_info[1]
+        season_number = season_number.strip()
+        episode_number = episode_number.strip()
+        if len(season_number) < season_padding:
+            season_number = int(int(season_padding) -
+                                len(season_number))*'0'+season_number
+        if len(episode_number) < episode_padding:
+            episode_number = int(int(episode_padding) -
+                                 len(episode_number))*'0'+episode_number
+        season_number = season_number.strip()
+        episode_number = episode_number.strip()
+        new_name = series_name + ' - Season ' + \
+            season_number + ' Episode '+episode_number + ' - '
+        series_info = re.split('\.', episode_name_given)
+        episode_name = series_info[0]
+        series_info = re.split('\.', file_got)
+        extension = series_info[-1]
+        new_name += episode_name + '.' + extension.strip()
+        os.rename(file_got, new_name)
 
 
     
@@ -64,6 +90,22 @@ while flag:
             except:
                 print('Season padding is not valid Please enter again\n')
         flag=False
+        concernedPath = os.path.join(folder_path,nameOfSeries[webSeriesIndex])
+        if webSeriesIndex ==1:
+            duplicate_file = rename_FIR(concernedPath)
+            print(f"Total Duplicate files removed -> {duplicate_file}")
+        elif webSeriesIndex ==2:
+            rename_Game_of_Thrones(concernedPath)
+        elif webSeriesIndex ==3:
+            rename_Sherlock(concernedPath)
+        elif webSeriesIndex ==4:
+            duplicate_file = rename_Suits(concernedPath)
+            print(f"Total Duplicate files removed -> {duplicate_file}")
+        else:
+            duplicate_file = rename_How_I_Met_Your_Mother(concernedPath)
+            print(f"Total Duplicate files removed -> {duplicate_file}")
+            
+
 
     else:
         print("Series is not in the Database of the existing series please select from the database:)")
