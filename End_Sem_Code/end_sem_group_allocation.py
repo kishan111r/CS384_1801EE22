@@ -1,3 +1,10 @@
+# Name: Kishan Kumar Singh
+# Roll No: 1801EE22
+# End Semester Assignment 
+# Date: 30 November 2020
+
+
+
 import os
 import csv
 import math
@@ -120,7 +127,6 @@ def group_allocation(filename, number_of_groups):
             located_data = data_reader.iloc[counter:counter+group_table[j][i]] # Locate in the dataframe
             rows_to_write = located_data.values.tolist()
             counter += group_table[j][i]
-            # writer_file = group_table[j][0]
             present_dir  =  os.getcwd()
             group_folder = os.path.join(present_dir,"Group_Wise_Folder")
             writer_file = os.path.join(group_folder,group_table[j][0])
@@ -143,3 +149,8 @@ def group_allocation(filename, number_of_groups):
 filename = "Btech_2020_master_data.csv"
 number_of_groups = 12
 group_allocation(filename, number_of_groups)
+
+
+
+# The Branches and the Groups have been added to a seprate folder for ease of handling and clarity
+# The statiscal folders are in the main working directory.
