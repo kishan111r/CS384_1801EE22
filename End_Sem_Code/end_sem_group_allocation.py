@@ -2,13 +2,25 @@ import os
 import csv
 import math
 import pandas as pd
-
+import shutil
 
 def group_allocation(filename, number_of_groups):
     # Entire Logic 
 	# You can add more functions, but in the test case, we will only call the group_allocation() method,
     # curr_dir =  os.getcwd()
     # os.path.join(curr_dir,filename)
+    #Code to Delete existing File (if Any)
+    dire = os.getcwd()
+    group_folder = os.path.join(dire,'Group_Wise_Folder')
+    if(os.path.isdir(group_folder)):
+        shutil.rmtree(group_folder)
+    os.mkdir(group_folder)
+    branch_folder = os.path.join(dire,'Branch_Wise_Folder')
+    if(os.path.isdir(branch_folder)):
+        shutil.rmtree(branch_folder)
+    os.mkdir(branch_folder)
+
+
     branch_wise_count = {}
     with open(filename,mode='r') as file:
         my_file = csv.DictReader(file,delimiter=',',skipinitialspace=True)
